@@ -1,20 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
-import Button from 'antd/lib/button';
-import firebase from '../config/config';
+// import Button from 'antd/lib/button';
 import img from '../pic/loading.gif';
-// import Uploadpic from '../postform/uploadpic';
-// import ImageUpload from '../component/imageUpload';
+import 'antd/dist/antd.css';
+import {logout} from '../action/actiontype';
+import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
 import FileField from './fileField';
+import { push } from 'connected-react-router';
 const { SubMenu } = Menu;
 const { Header, Content, Footer, Sider } = Layout;
+
 //引用左上角logo用的function
 const Logo = () => {
   // Import result is the URL of your image
   return <img src={img} alt="Logo" style = {{width:'80px',height:'80px',margin: '0px 0px 0px 0',float:'left'}} />;
 }
 //fakepage 為antd 拉進來用的假版面
-const Fakepage =(uploadpic) => {
+
+class Fakepage extends Component{
+  render(){
   return(
   <Layout>
     <Header className="header" style = {{height :'80px'}}>
@@ -38,23 +43,16 @@ const Fakepage =(uploadpic) => {
      
       <div >
           {/*引用firebase api 來抓取firebase 註冊的使用者名稱 */}
-         {firebase.auth().currentUser.displayName} 
+ 
       </div>
-       {/* 引用firebase api 點方法來近行auth  登出 */}
-        <Button  
-          style = {{marginLeft:'800px',marginBottom:'0px'}}
-            type="danger" 
-            
-            onClick={()=>firebase.auth().signOut()
-        }>
-            登出
-        </Button> 
+ 
+    
         
       </div>
     </Header>
-
+ 
     {/*插入上傳以及選擇檔案圖片位置為 ../component/fileField */}
-
+   
     <FileField />
     <Content style={{ padding: '0 50px' }}>
       <Breadcrumb style={{ margin: '16px 0' }}>
@@ -122,4 +120,17 @@ const Fakepage =(uploadpic) => {
 
   );
 }
-export default Fakepage;
+}
+const mapDispatchToProps = {
+  logout,
+  push
+}
+const mapStateToProps = (state) => {
+  return {
+    
+  }
+}
+export default withRouter(connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Fakepage));

@@ -1,24 +1,22 @@
-import {LOGIN,LOGOUT,LOADING,SIGNIN} from '../constants/constants';
+import {LOGIN,LOGOUT,SIGNIN} from '../constants/constants';
+import firebase from '../config/config';
 
 const login = {
-    value:null,
-    loadingview:false,
-  
+    value:false, 
 } 
 const checklogin = (state = login ,action) =>  {
     switch(action.type){
-        
         case LOGIN:
-          return { ...state, value: action.value, loadingview: action.loadingview  };
+          return { ...state, value:true  };
         case LOGOUT:
-          return { ...state, value: action.value , loadingview: action.loadingview };
-        case LOADING:
-          return { ...state, loadingview: action.loadingview };
+           firebase.auth().signOut();
+          return { ...state, value:false};
         case SIGNIN:
-        return  {...state,loadingview: action.loadingview};
+        return  { ...state};
         default:
            return state ;
     }
 }
+
 
 export default checklogin;

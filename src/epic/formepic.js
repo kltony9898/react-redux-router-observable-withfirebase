@@ -5,6 +5,7 @@ import {ofType} from 'redux-observable';
 import firebase from '../config/config';
 import {ajax} from 'rxjs/ajax';
 import *as actiontype from '../action/actiontype';
+import { message } from 'antd';
 const formEpic = (action$) => 
 
 
@@ -20,19 +21,35 @@ action$.pipe(
                 userNickname:value.userNickname,
                 InvitationCode:undefined
             };
-            console.log(signup);
-            
             return ajax
-                  .post(`https://289b5c2f.ngrok.io/user/signup`,
+                  .post(`https://67634866.ngrok.io/user/signup`,
                   signup,
                   {'Content-Type':'application/json'})
             .pipe(
-              mergeMap(response =>{  
-                  return of (actiontype.login());   
+              mergeMap(response =>{ 
+                message.success('註冊成功');
+                return of (actiontype.login());
               })
               ,catchError(error => {
-                return of(actiontype.signin());
-                //window.location.reload();
+                switch(error.status){
+                  case 201 :
+                  message.error('POST 封包內容不符合設定');
+                  break;
+                  case 202 :
+                  message.error('會員已註冊');
+                  break;
+                  case 403 :
+                  message.error('已註冊 firebase 會員,但未新增到 sql');
+                  break;
+                  case 404 :
+                  message.error('firebase 內查無此 user');
+                  break;
+                  case 405 :
+                  message.error('註冊失敗(sql問題)');
+                  break;
+                  default:return null;
+                }
+                
               })
             )
             

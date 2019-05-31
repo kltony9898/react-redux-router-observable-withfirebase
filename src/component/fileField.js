@@ -2,7 +2,10 @@ import React,{Component} from 'react';
 import firebase from 'firebase';
 import {storage} from '../config/config';
 import { Upload, Button, Icon } from 'antd';
-
+import {logout} from '../action/actiontype';
+import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
+import { push } from 'connected-react-router';
 class FileField extends Component {
     constructor(props) {
         super(props);
@@ -19,7 +22,6 @@ class FileField extends Component {
     }
 componentDidMount =()=>{
   firebase.storage().ref('images').child('aaa.gif').getDownloadURL().then(url => {
-  
   this.setState({url});
 })
 }
@@ -103,8 +105,32 @@ handleUpload = () => {
             height="70px" 
             width="70px"
              />
+           <Button  
+            style = {{marginLeft:'0px',marginBottom:'0px'}}
+            onClick = {()=>{this.props.logout();this.props.push('/');}}
+            //this.props.logout()
+            //firebase.auth().signOut()
+            // onClick={this.props.logout()}
+            //  onClick = {this.props.push('/')}
+          
+   
+            >
+            登出
+            </Button> 
       </div>
     )
   }
 }
-export default FileField;
+const mapDispatchToProps = {
+  logout,
+  push
+}
+const mapStateToProps = (state) => {
+  return {
+    
+  }
+}
+export default withRouter(connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(FileField));

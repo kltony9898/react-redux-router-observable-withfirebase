@@ -58,7 +58,7 @@ const SimpleForm = props => {
        <div>填寫你該死的基本資料</div> 
       <div>
         <div style = {{marginBottom:-30}}>
-        <label style = {{ display: 'flex',justifyContent:'left',alignItems:'left'}}>帳號</label>
+        <label style = {{ display: 'flex',justifyContent:'center',alignItems:'left'}}>帳號</label>
         <Field
             name="userAccount"
             component={AInput}
@@ -77,9 +77,7 @@ const SimpleForm = props => {
             component={AInput}
             type="text"
             placeholder="邀請碼"
-            
           />
-        
         </div>
       <div>
       <br />
