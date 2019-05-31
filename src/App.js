@@ -1,7 +1,7 @@
 import React from 'react';
 // import Container from './container/container';
 import firebase from './config/config';
-import {login, logout,loading} from './action/actiontype.js';
+import {login, logout} from './action/actiontype.js';
 import {connect} from 'react-redux';
 import Firebaseui from './component/firebaseui';
 class App extends React.Component {
@@ -32,7 +32,6 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    loading,
     login,
     logout,
 }

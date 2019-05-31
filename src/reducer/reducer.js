@@ -1,4 +1,4 @@
-import {LOGIN,LOGOUT,SIGNIN} from '../constants/constants';
+import {LOGIN,LOGOUT} from '../constants/constants';
 import firebase from '../config/config';
 
 const login = {
@@ -11,8 +11,6 @@ const checklogin = (state = login ,action) =>  {
         case LOGOUT:
            firebase.auth().signOut();
           return { ...state, value:false};
-        case SIGNIN:
-        return  { ...state};
         default:
            return state ;
     }
