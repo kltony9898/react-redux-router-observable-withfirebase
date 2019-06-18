@@ -4,8 +4,9 @@ import {signup} from '../action/actiontype';
 import {connect} from 'react-redux';
 import SimpleForm from '../postform/postform';
 
-class Signup extends React.Component {
 
+//呼叫redux-form組建  好讓表單送出註冊
+class Signup extends React.Component {
   render(){
     return (
       <div >

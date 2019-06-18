@@ -20,10 +20,6 @@ const validate = values => {
     errors.InvitationCode = '請填入值'
   }else if (!/^[A-Z0-9]{1,6}$/i.test(values.InvitationCode)){
     errors.InvitationCode = '不符合邀請碼格式';
-    
-    // if(values.code.length !== 6){
-    //   errors.code = '邀請碼長度必須為6';
-    // }
   }
   return errors;
 }

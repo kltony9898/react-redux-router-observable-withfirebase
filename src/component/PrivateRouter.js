@@ -1,6 +1,8 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+
+//限定路由組件要用到再拉
 const PrivateRoute = ({ component: Component, value, ...rest }) => (
   <Route
     {...rest}

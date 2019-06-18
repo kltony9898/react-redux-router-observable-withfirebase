@@ -1,6 +1,6 @@
 import firebase from 'firebase';
 import 'firebase/storage';
-
+//firebaseui config
 export const uiConfig = {
   signInSuccessUrl: '/',
   signInOptions: [
@@ -12,6 +12,9 @@ export const uiConfig = {
     signInSuccessWithAuthResult: ()=> false,
   },
 };
+//固定api 若要用到api前碼請引用這裡
+export const api = 'https://027ed482.ngrok.io';
+
 
 const config = {
   apiKey: "AIzaSyBUEv-F1MNnUyMuXTDLyrRwr9aVbQfd6ek",
@@ -23,7 +26,6 @@ const config = {
 }
 firebase.initializeApp(config);
 export const storage = firebase.storage();
-
 
 
 export default firebase ;

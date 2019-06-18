@@ -6,6 +6,7 @@ import {logout} from '../action/actiontype';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import { push } from 'connected-react-router';
+///更改大頭照那業專用 
 class FileField extends Component {
     constructor(props) {
         super(props);
@@ -20,8 +21,10 @@ class FileField extends Component {
           this.handleUpload = this.handleUpload.bind(this);
       
     }
+    //此為掛載component時抓取使用者firebase帳號頭貼
 componentDidMount =()=>{
   firebase.storage().ref('images').child('aaa.gif').getDownloadURL().then(url => {
+    console.log(url);
   this.setState({url});
 })
 }
@@ -83,40 +86,34 @@ handleUpload = () => {
     };
 
     return (     
-      <div style = {{float :"right",marginLeft:'500px'}}>
+      <div >
+        <div >
             <Upload {...props} >
-            <Button style = {{float :"right",marginRight:'70px'}}>
+            
+            <Button>
             <Icon type="upload" /> Select File
+            
             </Button>
-            </Upload>
-            <div />
+            
+            </Upload>   
             <Button
+      
             type="primary"
             onClick={this.handleUpload}
             disabled={fileList.length === 0}
             loading={uploading}
-            style={{ marginTop: 16 }}
               >
             {uploading ? 'Uploading' : 'Start Upload'}
             </Button>
+
             <img 
-            src={this.state.url || 'http://via.placeholder.com/400x300'} 
-            alt="Uploaded images" 
-            height="70px" 
-            width="70px"
+              src={this.state.url || 'http://via.placeholder.com/400x300'} 
+              alt="Uploaded images" 
+              height="50px" 
+              width="50px"
              />
-           <Button  
-            style = {{marginLeft:'0px',marginBottom:'0px'}}
-            onClick = {()=>{this.props.logout();this.props.push('/');}}
-            //this.props.logout()
-            //firebase.auth().signOut()
-            // onClick={this.props.logout()}
-            //  onClick = {this.props.push('/')}
-          
-   
-            >
-            登出
-            </Button> 
+           
+        </div>
       </div>
     )
   }

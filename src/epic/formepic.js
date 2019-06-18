@@ -6,6 +6,7 @@ import firebase from '../config/config';
 import {ajax} from 'rxjs/ajax';
 import *as actiontype from '../action/actiontype';
 import { message } from 'antd';
+import {api} from '../config/config';
 const formEpic = (action$) => 
 
 
@@ -22,7 +23,7 @@ action$.pipe(
                 InvitationCode:undefined
             };
             return ajax
-                  .post(`https://67634866.ngrok.io/user/signup`,
+                  .post(`${api}/user/signup`,
                   signup,
                   {'Content-Type':'application/json'})
             .pipe(
