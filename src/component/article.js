@@ -3,7 +3,7 @@ import {withRouter} from 'react-router-dom';
 import React, { Component } from 'react';
 import {post} from './post&return';
 import { Menu, Dropdown, Button,Modal,Input } from 'antd';
-
+import '../css/article.css';
 ///body 底下中間欄位 上欄為 發文處
 class Article extends Component{
   state = { visible: false };
@@ -45,14 +45,14 @@ class Article extends Component{
       );
     return(
       //發文處
-        <div  style = {{width:'100%',height:'100%'}} >
-          <div style={{marginBottom:'40px'}}>
-            <TextArea rows={4} onClick={this.showModal} style={{height:'100px',width:'100%'}} />
+        <div >
+          <div className='top'>
+            <TextArea rows={4} onClick={this.showModal} className='textarea' />
             <div style={{height:'20px',width:'100%'}}>
-            <Dropdown style={{width:'50%'}} overlay={menu} placement="bottomCenter">
-                <Button style={{width:'50%'}}>個版</Button>
+            <Dropdown  overlay={menu} placement="bottomCenter">
+                <Button className= 'button'>個版</Button>
              </Dropdown>
-             <Button type="primary" onClick={this.showModal} style={{width:'50%'}}>
+             <Button type="primary" onClick={this.showModal} className='button'>
                 發文
               </Button>
               <Modal
@@ -61,14 +61,17 @@ class Article extends Component{
                 onOk={this.handleOk}
                 onCancel={this.handleCancel}
               >
-                <input style={{height:'100px',width:'100%'}} />
+                <input className='input'/>
               </Modal>
             </div>
           </div>
+
+          
         {/* 呼叫下方抓取版面貼文 的component /component/post&return */}
           {post(this.props.response)}
-        </div>
 
+
+        </div>
      );
     }
 }

@@ -12,9 +12,24 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-
+// import logo from '../pic/icLikeDefault.png';
 //透過map將已經得到的response 處理完資料每一筆文章資料輸出一個div 
 //圖片部分目前寫死尚未做完
+// const style = {
+//   backgroundColor:'red',
+//   'div:hover':{
+//     backgroundColor:'green',
+//   }
+// };
+// const Logo = () => {
+//   // 左上角logo
+//   return <img
+//           src={logo} 
+//           alt="Logo" 
+//           />;
+
+// }
+
 export const post = (response)=>{
 const pic = 'https://scontent.frmq2-1.fna.fbcdn.net/v/t1.15752-9/61417654_341395039822421_7431497786744373248_n.jpg?_nc_cat=102&_nc_oc=AQkJ6fldwCOC2OamVgSVstPS2cEaHNkwy_4IDr-FMArHVGmploENnNerv_PynA5OEBA&_nc_ht=scontent.frmq2-1.fna&oh=f89492662e10884217245b198826942a&oe=5D92EDB6'
         if(response){
@@ -52,7 +67,11 @@ const pic = 'https://scontent.frmq2-1.fna.fbcdn.net/v/t1.15752-9/61417654_341395
                   </Typography>
                 </CardContent>
                 <CardActions disableSpacing>
-                  <IconButton aria-label="Add to favorites">
+                {/* <div style={style}>
+                 <Logo />
+                  讚
+                 </div> */}
+                  <IconButton aria-label="add to favorites">
                     <FavoriteIcon />
                   </IconButton>
                   <IconButton aria-label="Share">

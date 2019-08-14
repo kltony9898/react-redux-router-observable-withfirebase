@@ -1,0 +1,15 @@
+.search{
+    margin-top: 10px;
+ 
+}
+.cir{
+    margin-left: 5%;
+    float: left;
+    border: none;
+    border-radius: 60px;
+    width: 40%;
+    outline: none;
+    background-color:rgb(226, 226, 226);
+    height: 39px;
+    text-align: center;
+}

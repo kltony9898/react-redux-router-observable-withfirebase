@@ -13,7 +13,7 @@ export const uiConfig = {
   },
 };
 //固定api 若要用到api前碼請引用這裡
-export const api = 'https://027ed482.ngrok.io';
+export const api = 'https://24bbb654.ngrok.io';
 
 
 const config = {

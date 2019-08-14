@@ -21,7 +21,7 @@ firebase 三方驗證登入Simple
 
 透過create-react-app應用程序快速提供react檔案配置
 
-    yarn add create-react-app
+    npm create-react-app
 
 ## redux 
 

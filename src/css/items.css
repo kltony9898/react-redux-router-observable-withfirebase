@@ -1,0 +1,30 @@
+.items{
+    background-color:#ffffff;
+    width: 100%;
+}
+.group{
+    margin-top:0px;
+    text-align:center;
+    margin-right:2%;
+    float:right;
+    width:40%;
+    margin-left:2%;
+}
+.li{
+    width: 20%;
+    color:#750058;
+    text-shadow: black;
+}
+.burger{
+    display:none;
+}
+@media screen and (max-width:900px) { 
+    .group{
+       width: 100%;
+       margin-top: 0px;
+    }
+    .li{
+        display: none;
+    }
+
+  }
